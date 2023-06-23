@@ -113,4 +113,11 @@ namespace hastane_otomasyon
             formlar.dataGridVeri(mda, formlar.formNakiller.dataGridView1); // formlar tablosunda dataGridVeri isimli fonksiyonu
                                                                            // çağırdık ve o fonksiyon verdiğimiz sql cümlesi ile formlar.formNakiller.dataGridView1'i istediğimiz b
         }
+        private void gETs(object sender, EventArgs e)
+        {// Nakil giden hastalar isimli buton kodları
+            MySqlDataAdapter mda = new MySqlDataAdapter("SELECT nakiller.nakiledilenHastane, hastalar.adi, hastalar.soyadi, doktorlar.doktorAdiSoyadi FROM hastalar INNER JOIN nakiller ON nakiller.nakilTC = hastalar.TC INNER JOIN doktorlar ON nakiller.doktorID = doktorlar.doktorID", formlar.baglanti);
+            // mysqldataadapter oluşturduk ve içerisine sql cümlemizi yazdık.
+            formlar.dataGridVeri(mda, formlar.formNakiller.dataGridView1); // formlar tablosunda dataGridVeri isimli fonksiyonu
+                                                                           // çağırdık ve o fonksiyon verdiğimiz sql cümlesi ile formlar.formNakiller.dataGridView1'i istediğimiz b
+        }
     }
